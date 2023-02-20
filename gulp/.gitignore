@@ -1,0 +1,24 @@
+.DS_Store*
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp\
+
+# Development Files
+*.map
+*.log
+dist/
+
+# Dependencies       #
+######################
+node_modules
+node_modules/
+.package-lock.json
+package-lock.json
+yarn.lock
+
+# Editor Settings
+.idea/*

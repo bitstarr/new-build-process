@@ -1,0 +1,61 @@
+.details {
+    padding: var( --gap-deci ) var( --gap );
+    background: var( --default-ui );
+    border-bottom: 2px solid var( --default-border-ink );
+
+    & + & {
+        margin-top: var( --font-line );
+    }
+
+    &__trigger {
+        all: inherit;
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: var( --gap-deci ) 0;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__title {
+        position: relative;
+        display: block;
+        font-weight: 700;
+    }
+    &__title::before,
+    &__title::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        background: currentcolor;
+    }
+    &__title::after {
+        right: .5rem;
+        transform: translate(50%, -50%);
+        height: 1rem;
+        width: .25rem;
+    }
+    &__title::before {
+        right: 0;
+        transform: translate(0, -50%);
+        height: .25rem;
+        width: 1rem;
+    }
+
+    &__trigger::marker {
+        display: none;
+    }
+    &__trigger::-webkit-details-marker {
+        display: none;
+    }
+
+    &[data-expanded='false'] &__content {
+        display: none;
+    }
+    &[open] &__title::after,
+    &[data-expanded='true'] &__title::after {
+        display: none;
+    }
+}

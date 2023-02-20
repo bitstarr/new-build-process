@@ -1,0 +1,36 @@
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    &__img {
+        width: 100%;
+        /* object-fit: cover; */
+    }
+
+    &__title {
+        position: absolute;
+        left: 0;
+        bottom: var( --gap-deca );
+        font-size: 2em;
+        font-weight: 700;
+        color: #fff;
+
+        .padded {
+            display: inline;
+            padding: .1em var( --gap-deci );
+            line-height: calc( 1.2em + ( 2 * .1em ) );
+            background: hsl( 0 0% 0% / .6 );
+            box-decoration-break: clone;
+        }
+    }
+
+    &__author {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 1ex;
+        font-size: .6em;
+        color: #fff;
+        background-color: hsl( 0 0% 0% / .7 );
+    }
+}

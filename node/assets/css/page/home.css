@@ -1,0 +1,6 @@
+.v-home {
+    .hero {
+        display: block;
+    }
+}
+/* this is just an example fo testing the generation of page level css files in /dist */

@@ -1,0 +1,72 @@
+/* Form Fixes / Normalisations */
+:where( select, input, textarea ) {
+    color: inherit;
+    /* revert the 'white-space' property for textarea elements on Safari */
+    white-space: revert;
+}
+:where( label ) { cursor: pointer; }
+:where( textarea ) { resize: vertical; }
+
+/* Address inconsistent `text-transform` inheritance for `button` and `select`. */
+:where( button, select ) { text-transform: none; }
+
+/**
+ * Correct the inability to style buttons in iOS and Safari.
+ * Improve usability and consistency of cursor style
+ */
+:where( button, input:is( [type='button' i], [type='reset' i], [type='submit' i] ) ) {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+}
+:where( button[disabled], input[disabled] ) { cursor: default; }
+
+/**
+ * Remove the inner border and padding of focus outlines in Firefox.
+ */
+:where( button, input:is( [type='button' i], [type='color' i], [type='reset' i], [type='submit' i] ) )::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/**
+ * We like our number inputs undecorated
+ */
+:where( input[type='number'] ) { -moz-appearance: textfield; }
+::-webkit-inner-spin-button { -webkit-appearance: none; }
+::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+/**
+ * If we like decorations, we will need to give them shape:
+ * Correct the cursor style of increment and decrement buttons in Safari.
+*/
+/*
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+   height: auto;
+}
+*/
+
+/**
+ * 1. Correct the odd appearance in Chrome, Edge, and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+:where( input[type='search' i] ) {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome, Edge, and Safari on macOS.
+ */
+::-webkit-search-cancel-button,
+::-webkit-search-decoration { -webkit-appearance: none; }
+
+
+/**
+* 1. Correct the inability to style upload buttons in iOS and Safari.
+* 2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+}

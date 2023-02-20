@@ -1,0 +1,123 @@
+{
+    "private": true,
+    "license": "UNLICENSED",
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "devDependencies": {
+        "glob": "*",
+        "fs": "*",
+        "del": "*",
+        "chalk": "*",
+        "mkdirp": "*",
+        "pretty-bytes": "*",
+        "npm-run-all": "*",
+
+        "eslint": "*",
+        "stylelint": "^14.0.0",
+
+        "imagemin": "*",
+        "imagemin-gifsicle": "*",
+        "imagemin-mozjpeg": "*",
+        "imagemin-pngquant": "*",
+        "imagemin-zopfli": "*",
+        "imagemin-svgo": "*",
+
+        "svg-sprite": "*",
+        "vinyl": "*",
+
+        "autoprefixer": "*",
+        "cssnano": "*",
+        "cssnano-preset-advanced": "*",
+        "postcss": "*",
+        "postcss-import": "*",
+        "postcss-nested": "*",
+
+        "concat": "*",
+        "terser": "*",
+
+        "onchange": "*",
+        "browser-sync": "*",
+
+        "ruleemall": "https://github.com/bitstarr/ruleemall/"
+    },
+    "optionalDeps": {
+        "chocolat": "1.0.4"
+    },
+    "resourceDeps": {
+        "a11y-test": "https://github.com/matuzo/a11y-tests.css",
+        "a11y.css": "latest",
+        "bytesize-icons": "latest",
+        "color-blindness-emulation": "git://github.com/hail2u/color-blindness-emulation",
+        "geomicons-open": "latest",
+        "lint-html-with-css": "git://github.com/lendk/Lint-HTML-with-SCSS-CSS",
+        "superTinySocialIcons": "git://github.com/edent/SuperTinySocialIcons",
+        "web.svg.min": "git://github.com/larsenwork/web.svg.min"
+    },
+    "config": {
+        "css": "assets/css/",
+        "cssDist": "dist/css/",
+        "js": "assets/js/",
+        "jsSrc": "assets/js/src/",
+        "jsDist": "dist/js/",
+        "img": "assets/img/",
+        "imgDist": "dist/img/",
+        "icons": "assets/icons/",
+        "iconsDist": "dist/icons/",
+        "sprite": "assets/icons/",
+        "spriteDist": "dist/sprite/",
+        "favicons": "assets/favicons/",
+        "faviconsDist": "dist/favicons/",
+        "fonts": "assets/fonts/",
+        "fontsDist": "dist/fonts/",
+        "assets": "assets/",
+        "dist": "dist/",
+        "bsProxy": "HOSTNAME.ddev.site"
+    },
+    "browserslist": [
+        "defaults",
+        "not ie 11",
+        "not ie_mob 11",
+        "not baidu >= 7.12",
+        "not and_qq >= 1.2",
+        "not op_mini all"
+    ],
+    "scripts": {
+        "js": "node .tasks/javascript-dev.mjs",
+        "jsmin": "node .tasks/javascript-build.mjs",
+
+        "css": "node .tasks/postcss-dev.mjs",
+        "cssmin": "node .tasks/postcss-build.mjs",
+
+        "fonts": "node .tasks/fonts.mjs",
+
+        "lint:css": "npx stylelint $npm_package_config_css",
+        "lint:js": "npx eslint $npm_package_config_js",
+        "lint": "run-p lint:*",
+
+        "img": "mkdir -p $npm_package_config_imgDist; cp -r $npm_package_config_img/* $npm_package_config_imgDist",
+        "imgmin": "node .tasks/images.mjs",
+        "imagemin": "node .tasks/images.mjs",
+        "icons": "node .tasks/icons.mjs",
+        "sprite": "node .tasks/svgsprite.mjs",
+        "favicons": "sh .tasks/favicons.sh $npm_package_config_favicons $npm_package_config_faviconsDist",
+        "faviconsmin": "node .tasks/faviconsmin.mjs",
+
+        "watch:css": "npx onchange $npm_package_config_css/**/*.css -- npm run css",
+        "watch:js": "npx onchange $npm_package_config_js/**/*.{js,json} -- npm run js",
+        "watch:img": "npx onchange $npm_package_config_img/**/*.{jpg,gif,png,svg} -- npm img",
+        "watch:icons": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run icons",
+        "watch:sprite": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run sprite",
+        "watch": "run-p watch:*",
+
+        "sync:devices": "npx browser-sync start --config .tasks/browsersyncrc.js",
+        "sync:watch": "run-p watch:*",
+        "sync": "run-p sync:*",
+
+        "todo": "grep -lir --color --exclude-dir=node_modules --exclude-dir=vendor --exclude-dir=var --exclude=package.json 'todo'",
+        "clean": "rm -rf $npm_package_config_dist/*",
+
+        "dev": "run-p css js img icons",
+        "build": "npm run lint && run-p cssmin jsmin imgmin icons fonts"
+    }
+}

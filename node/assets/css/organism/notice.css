@@ -1,0 +1,54 @@
+.notice {
+    /*
+        API:
+        --o-notice-surface          background
+        --o-notice-ink              text color
+        --o-notice-frame            border color
+        --o-notice-surface-success
+        --o-notice-ink-success
+        --o-notice-frame-success
+        --o-notice-surface-warning
+        --o-notice-ink-warning
+        --o-notice-frame-warning
+        --o-notice-surface-error
+        --o-notice-ink-error
+        --o-notice-frame-error
+    */
+    --_bg: var( --o-notice-surface, var( --default-ui ) );
+    --_txt: var( --o-notice-ink, var( --default-ink ) );
+    --_brd: var( --o-notice-frame, var( --default-ink ) );
+
+    padding: var( --gap-deci );
+    color: var( --_txt );
+    background: var( --_bg );
+    border-left: .4em solid var( --_brd );
+
+    &:empty { display: none; }
+
+    a {
+        text-decoration: underline;
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline dashed;
+        }
+    }
+
+    &--success {
+        --_bg: var( --o-notice-surface-success, #e5f3ef );
+        --_txt: var( --o-notice-ink-success );
+        --_brd: var( --o-notice-frame-success, #008566 );
+    }
+
+    &--warning {
+        --_bg: var( --o-notice-surface-warning, #fcf8f2 );
+        --_txt: var( --o-notice-ink-warning );
+        --_brd: var( --o-notice-frame-warning, #ffb820 );
+    }
+
+    &--error {
+        --_bg: var( --o-notice-surface-error, #fdf7f7 );
+        --_txt: var( --o-notice-ink-error );
+        --_brd: var( --o-notice-frame-error, #d0103a );
+    }
+}

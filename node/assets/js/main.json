@@ -1,0 +1,13 @@
+{
+    "lib": [],
+    "stock": [
+        "chocolat/dist/js/chocolat.js",
+        "embedvideo.js"
+    ],
+    "src": [
+        "base.js",
+        "navigation.js",
+        "details.js",
+        "tabs.js"
+    ]
+}

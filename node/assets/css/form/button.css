@@ -1,0 +1,50 @@
+.button {
+    /*
+        API:
+        --f-button-surface          background color
+        --f-button-ink              text color
+        --f-button-surface-hover    hover background color
+        --f-button-ink-hover        hover text color
+        --f-button-halo-hover       hover halo (boxshadow)
+        --f-button-surface-disable  disabled background color
+        --f-button-ink-disabled     disabled text color
+    */
+    --_bg: var( --f-button-surface, var( --default-primary) );
+    --_txt: var( --f-button-ink, var( --default-on-primary ) );
+    --_hover-bg: var( --f-button-surface-hover, var( --default-primary-dark ) );
+    --_hover-txt: var( --f-button-ink-hover, var( --default-on-primary ) );
+    --_hover-halo: var( --f-button-halo-hover, var( --default-primary-light ) );
+    --_disabled-bg: var( --f-button-surface-disabled, var( --default-ui ) );
+    --_disabled-txt: var( --f-button-ink-disabled, var( --default-muted ) );
+
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1ex;
+    line-height: 1.2;
+    text-align: center;
+    color: var( --_txt );
+    background: var( --_bg );
+    border: 0;
+    border-radius: 0;
+    transition: background-color .2s;
+
+    a& {
+        text-decoration: none;
+    }
+
+    &:not([disabled]):hover,
+    &:not([disabled]):focus {
+        --_bg: var( --_hover-bg );
+        --_txt: var( --_hover-txt );
+        box-shadow: 0 0 0 .1em var( --_hover-halo );
+    }
+
+    &[disabled] {
+        --_txt: var( --_disabled-txt );
+        --_bg: var( --_disabled-bg );
+        cursor: not-allowed;
+    }
+}

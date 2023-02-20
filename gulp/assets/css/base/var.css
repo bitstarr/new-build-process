@@ -1,0 +1,47 @@
+/* stylelint-disable */
+html {
+    /* define design tokens */
+
+    /* new cross OS sans font stack */
+    --font-default: 'Atkinson Chassis', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    /* use other font stacks like this:
+    --font-fancy: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida, 'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
+    */
+
+    --font-line: calc( 1em + .35rem );
+    /*
+        read about line-height: https://hugogiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/
+        which will recommend something like calc( 1.1em + .25rem )
+    */
+
+    /*
+        Wrapping
+    */
+    --wrapper: 60rem;
+    --wrapper-offset: .5fr;
+    @media ( min-width: 40rem ) {
+        --wrapper-offset: 4rem;
+    }
+
+    /*
+        Spacing
+        @see https://en.wikipedia.org/wiki/Metric_prefix
+    */
+    --gap-deci: .625rem;
+    --gap: 1.25rem; /* default distance */
+    --gap-deca: 2.5rem;
+    --gap-hecto: 4rem;
+    --gap-kilo: 8rem;
+    --gap-mega: 12rem;
+    --gap-giga: 16rem;
+
+    /* font-sizes */
+    --size-deci: .8em;
+    --size-deca: 1.2em;
+    --size-hecto: 1.55em;
+    --size-kilo: 1.9em;
+    --size-mega: 2.3em;
+    --size-giga: 3em;
+
+}
+/* stylelint-endable */

@@ -1,0 +1,101 @@
+::selection {
+    color: var( --selection-ink );
+    text-shadow: none;
+    background: var( --selection-surface );
+}
+
+body {
+    font: 1em/var( --font-line ) var( --font-default );
+    color: var( --default-ink );
+    background: var( --default-surface );
+    -webkit-font-smoothing: antialiased;
+    text-decoration-thickness: from-font;
+}
+
+:where( pre, code, kbd, samp ) {
+    font-family: monospace, monospace;
+}
+:where( pre ) {
+    /* padding: 1em; */
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    word-wrap: break-word; /* IE */
+}
+
+:where( small ) { font-size: 85%; }
+:where( strong, th ) { font-weight: 700; }
+:where( em ) { font-style: italic; }
+
+:where( sub, sup ) {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+:where( sub ) { bottom: -.25em; }
+:where( sup ) { top: -.5em; }
+
+:where( abbr ) {
+    font-variant: small-caps;
+    text-transform: lowercase;
+}
+:where( abbr[title] ) {
+    text-decoration: underline;
+    text-decoration: underline dotted;
+
+    &:hover { cursor: help; }
+}
+
+/*
+    Basic link styles
+*/
+:where( a ) {
+    --_default: var( --color-link, var( --default-link ) );
+    --_hover: var( --color-hover, var( --default-hover ) );
+
+    text-decoration: none;
+    color: var( --_color, var( --_default ) );
+    cursor: revert;
+
+    &:focus,
+    &:hover {
+        --_color: var( --_hover );
+    }
+}
+:where( a[href^='tel'] ) {
+    --color-link: inherit;
+    cursor: inherit;
+}
+
+/*
+    Removes spacing between cells in tables
+    Correct table border color in Chrome, Edge, and Safari.
+    Remove text indentation from table contents in Chrome, Edge, and Safari.
+    Set Numbers in tabular format
+*/
+:where(table) {
+    border-collapse: collapse;
+    border-color: currentcolor;
+    text-indent: 0;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+:where( td, td img ) { vertical-align: top; }
+:where( caption, th, td ) {
+    padding: .5em;
+    text-align: left;
+}
+
+/*
+    if you want to set explicit quotation characters,
+    define them langauage specific
+:lang(de-DE) { quotes:'\201E' '\201C' '\201A' '\2018' }
+:lang(de-CH) { quotes:'\00AB' '\00BB' '\2039' '\203A' }
+:lang(en)    { quotes:'\201C' '\201D' '\2018' '\2019' }
+:lang(fr)    { quotes:'\00AB\00A0' '\00A0\00BB' '\2039\00A0' '\00A0\203A' }
+
+    of for all at once
+q { quotes: '\201E' '\201C' '\201A' '\2018'; }
+q::before { content: open-quote; }
+q::after { content: close-quote; }
+*/

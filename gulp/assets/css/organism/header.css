@@ -1,0 +1,17 @@
+.header {
+    --_bg: var( --header-bg );
+    --_txt: var( --header-text );
+
+    color: var( --_txt );
+    background-color: var( --_bg );
+
+    .wrapped {
+        display: flex;
+        align-items: center;
+        padding: var( --gap ) 0;
+        height: 100%;
+    }
+    .logo {
+        margin-right: auto;
+    }
+}
