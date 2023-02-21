@@ -85,13 +85,13 @@ Every JS file in ``/assets/js`` will be copied in ``/dist/js``. Bundles will run
 
 ````json
 {
-    "lib": [
-        "choices.js/public/assets/scripts/choices.min.js"
-    ],
-    "src": [
-        "address.js",
-        "userprofile.js"
-    ]
+    "lib": [
+        "choices.js/public/assets/scripts/choices.min.js"
+    ],
+    "src": [
+        "address.js",
+        "userprofile.js"
+    ]
 }
 ````
 

@@ -6,7 +6,7 @@ In 2018, I was trying different approaches to overhaul my build process. webpack
 
 Now in 2023, it felt like the scratch was itching again. Also, the number of vulnerabilities seemed to rise with every new project I started. Luckily, I had some time to spare to give node scripting a new try.
 
-I'm transforming the workflow of my [theme boilderplate 'chassis'](https://github.com/bitstarr/grav-theme-chassis) for [grav](getgrav.org/) for grav as an example here.
+I'm transforming the workflow of my [theme boilderplate 'chassis'](https://github.com/bitstarr/grav-theme-chassis) for [grav](getgrav.org/) as an example here.
 
 ## What am I expecting?
 
@@ -30,13 +30,13 @@ Every JS (not JSON) file in `/assets/js` will simply be copied in `/dist/js`. Bu
 
 ````json
 {
-    "lib": [
-        "choices.js/public/assets/scripts/choices.min.js"
-    ],
-    "src": [
-        "address.js",
-        "userprofile.js"
-    ]
+    "lib": [
+        "choices.js/public/assets/scripts/choices.min.js"
+    ],
+    "src": [
+        "address.js",
+        "userprofile.js"
+    ]
 }
 ````
 
@@ -70,43 +70,43 @@ Since I'm not an experienced JengaScript or Node pro, I had to wrap my head arou
 In the `scripts` section of `package.json` these get addressed.
 
 ```json
-    "scripts": {
-        "js": "node .tasks/javascript-dev.mjs",
-        "jsmin": "node .tasks/javascript-build.mjs",
+    "scripts": {
+        "js": "node .tasks/javascript-dev.mjs",
+        "jsmin": "node .tasks/javascript-build.mjs",
 
-        "css": "node .tasks/postcss-dev.mjs",
-        "cssmin": "node .tasks/postcss-build.mjs",
+        "css": "node .tasks/postcss-dev.mjs",
+        "cssmin": "node .tasks/postcss-build.mjs",
 
-        "fonts": "node .tasks/fonts.mjs",
+        "fonts": "node .tasks/fonts.mjs",
 
-        "lint:css": "npx stylelint $npm_package_config_css",
-        "lint:js": "npx eslint $npm_package_config_js",
-        "lint": "run-p lint:*",
+        "lint:css": "npx stylelint $npm_package_config_css",
+        "lint:js": "npx eslint $npm_package_config_js",
+        "lint": "run-p lint:*",
 
-        "img": "mkdir -p $npm_package_config_imgDist; cp -r $npm_package_config_img/* $npm_package_config_imgDist",
-        "imagemin": "node .tasks/images.mjs",
-        "icons": "node .tasks/icons.mjs",
-        "sprite": "node .tasks/svgsprite.mjs",
-        "favicons": "sh .tasks/favicons.sh $npm_package_config_favicons $npm_package_config_faviconsDist",
-        "faviconsmin": "node .tasks/faviconsmin.mjs",
+        "img": "mkdir -p $npm_package_config_imgDist; cp -r $npm_package_config_img/* $npm_package_config_imgDist",
+        "imagemin": "node .tasks/images.mjs",
+        "icons": "node .tasks/icons.mjs",
+        "sprite": "node .tasks/svgsprite.mjs",
+        "favicons": "sh .tasks/favicons.sh $npm_package_config_favicons $npm_package_config_faviconsDist",
+        "faviconsmin": "node .tasks/faviconsmin.mjs",
 
-        "watch:css": "npx onchange $npm_package_config_css/**/*.css -- npm run css",
-        "watch:js": "npx onchange $npm_package_config_js/**/*.{js,json} -- npm run js",
-        "watch:img": "npx onchange $npm_package_config_img/**/*.{jpg,gif,png,svg} -- npm img",
-        "watch:icons": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run icons",
-        "watch:sprite": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run sprite",
-        "watch": "run-p watch:*",
+        "watch:css": "npx onchange $npm_package_config_css/**/*.css -- npm run css",
+        "watch:js": "npx onchange $npm_package_config_js/**/*.{js,json} -- npm run js",
+        "watch:img": "npx onchange $npm_package_config_img/**/*.{jpg,gif,png,svg} -- npm img",
+        "watch:icons": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run icons",
+        "watch:sprite": "npx onchange $npm_package_config_icons/**/*.{svg} -- npm run sprite",
+        "watch": "run-p watch:*",
 
-        "sync:devices": "npx browser-sync start --config .tasks/browsersyncrc.js",
-        "sync:watch": "run-p watch:*",
-        "sync": "run-p sync:*",
+        "sync:devices": "npx browser-sync start --config .tasks/browsersyncrc.js",
+        "sync:watch": "run-p watch:*",
+        "sync": "run-p sync:*",
 
-        "todo": "grep -lir --color --exclude-dir=node_modules --exclude-dir=vendor --exclude-dir=var --exclude=package.json 'todo'",
-        "clean": "rm -rf $npm_package_config_dist/*",
+        "todo": "grep -lir --color --exclude-dir=node_modules --exclude-dir=vendor --exclude-dir=var --exclude=package.json 'todo'",
+        "clean": "rm -rf $npm_package_config_dist/*",
 
-        "dev": "run-s css js img icons",
-        "build": "npm run lint && run-p cssmin jsmin imagemin icons fonts"
-    }
+        "dev": "run-s css js img icons",
+        "build": "npm run lint && run-p cssmin jsmin imagemin icons fonts"
+    }
 ```
 
 To compare the results, I've set up two folders with the old workflow and the new one. One observation is that some linters and minifiers work a bit differently in newer versions (since the gulp ones are locked at an older version), which brings differences in file sizes with it.
