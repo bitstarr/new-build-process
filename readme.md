@@ -2,7 +2,7 @@
 
 For years I was using [gulp](https://gulpjs.com/) as a task runner to do all the routine things we used to do by hand over 10 years ago. First, somewhat around 2012 or 2013, I went with [grunt](https://gruntjs.com/), but as I felt it got abandoned, I switched to gulp. In the past years, some modules I used for the gulp processes stopped working in their most current versions because dependencies weren't up-to-date. So I had to freeze more and more versions instead of always going current (I know this is not the best practice). Nailing the versions of dependencies to issues from years ago felt really annoying.
 
-In 2018, I was trying different approaches to overhaul my build process. webpack got a lot of hype at that time, but it failed to match my expectations, so I tried plain shell scripting and a bit of node scripting. None of which was superior to my comfort zone gulp workflow at that time. So I just moved from grunt to gulp.
+In 2018, I was trying different approaches to overhaul my build process. webpack got a lot of hype at that time, but it failed to match my expectations, so I tried plain shell scripting and a bit of node scripting. None of which was superior to my comfort-zone-grunt-workflow at that time. So I just moved from grunt to gulp.
 
 Now in 2023, it felt like the scratch was itching again. Also, the number of vulnerabilities seemed to rise with every new project I started. Luckily, I had some time to spare to give node scripting a new try.
 
@@ -16,7 +16,7 @@ I'm not that fancy JS framework type of person. I'm more based around universal 
 
 PostCSS is doing the heavy lifting here. It will inline `@import`, resolve nesting and autoprefix.
 
-`/assets/css/main.css` is the main CSS file and hub. There are only imports inside, which will be inlined in processing. If you need to, you can add other CSS files in parallel to main.css to provide other subsets or differently scoped styles. Every CSS file stored directly in `/assets/css/` will be processed and the result stored in `/dist/css/`.
+`/assets/css/main.css` is the main CSS file and hub. There are only imports inside, which will be inlined in processing. If I need to, I can add other CSS files in parallel to main.css to provide other subsets or differently scoped styles. Every CSS file stored directly in `/assets/css/` will be processed and the result stored in `/dist/css/`.
 
 Additionally, this will also happen to CSS files in `/assets/css/page`. So you can create per page/view additions or overwrites that can be referenced by templates.
 
@@ -26,7 +26,7 @@ Since there are no frameworks, I will just need to bundle (concatenate) some JS 
 
 In `/assets/js`, there are.js and .json files as well as a `src` folder. JSON files are the base for bundles. With these, I order to concatenate multiple components from the `src` folder as well as libraries from `/node_modules`. In bundles, the order is important. The libs will appear before the code from `src`.
 
-Every JS (not JSON) file in `/assets/js` will simply be copied in `/dist/js`. Bundles should run through a concatenation of their parts and the result will be saved as js in `/dist/js` as well. On build uglifying will be added those steps.
+Every JS (not JSON) file in `/assets/js` will simply be copied in `/dist/js`. Bundles should run through a concatenation of their parts and the result will be saved as .js in `/dist/js` as well. On build uglifying will be added those steps.
 
 ````json
 {
@@ -59,7 +59,7 @@ I need a way to optimize all necessary favicon files. There could be a chance to
 
 ### Watch / Browsersync / LiveReload
 
-Of course, I don't want to trigger the automation manually after every file-safe. So there needs to be a watch job. Also including some live relaoding and BroserSync for multi device testing would be very nice.
+Of course, I don't want to trigger the automation manually after every file-safe. So there needs to be a watch job. Also including some live relaoding or BrowserSync for multi device testing would be very nice.
 
 ## Going from gulp to pure node
 
