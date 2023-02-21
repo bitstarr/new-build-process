@@ -16,13 +16,13 @@ Ich bin keiner der mit fancy JavaScript Frameworks hantiert. Ich orientiere mich
 
 PostCSS übernimmt hier die schwere Arbeit. Es werden `@import` Anweisungen zusammengeführt, nesting aufgelöst und mit autoprefix angereichert.
 
-`/assets/css/main.css` ist die Haupt-CSS-Datei und der Knotenpunkt. Darin befinden sich nur Importe, die bei der Verarbeitung zusammengefügt werden. Bei Bedarf kann ich parallel zu main.css weitere CSS-Dateien hinzufügen, um andere Untergruppen oder Styles mit unterschidelichen Geltungsbereich (scope) bereitzustellen. Jede CSS-Datei, die direkt in `/assets/css/` gespeichert ist, wird verarbeitet und das Ergebnis in `/dist/css/` gespeichert.
+`/assets/css/main.css` ist die Haupt-CSS-Datei und der Knotenpunkt. Darin befinden sich nur Importe, die bei der Verarbeitung zusammengefügt werden. Bei Bedarf kann ich parallel zu main.css weitere CSS-Dateien hinzufügen, um andere Untergruppen oder Styles mit unterschiedlichen Geltungsbereich (scope) bereitzustellen. Jede CSS-Datei, die direkt in `/assets/css/` gespeichert ist, wird verarbeitet und das Ergebnis in `/dist/css/` gespeichert.
 
 Zusätzlich wird dies auch mit CSS-Dateien in `/assets/css/page` geschehen. So können Sie pro Seite/View Ergänzungen oder Überschreibungen erstellen, die von Templates eingebunden werden können.
 
 ### JS Dateien und Bundles
 
-Da keine Frameworks im SPiel sind, muss ich nur einige JS-Dateien (meist unabhängige, funktional geschlossene Komponenten) und vielleicht einige Bibliotheken bündeln (verketten/concat), die wir via npm/package.json verwalten.
+Da keine Frameworks im Spiel sind, muss ich nur einige JS-Dateien (meist unabhängige, funktional geschlossene Komponenten) und vielleicht einige Bibliotheken bündeln (verketten/concat), die wir via npm/package.json verwalten.
 
 In `/assets/js` befinden sich .js und .json Dateien sowie ein `src` Ordner. JSON-Dateien sind die Basis für Bundles. Mit diesen möchte ich mehrere Komponenten aus dem Ordner `src` sowie Bibliotheken aus `/node_modules` verketten. Bei Bundles ist die Reihenfolge wichtig. Die Bibliotheken werden vor dem Code aus `src` erscheinen.
 
@@ -50,7 +50,7 @@ Alle Icons in `/assets/icon` werden beim Speichern optimiert (Watch-Task) und in
 
 ### Webfonts
 
-Die .woff2 Dateien in `/assets/fonts` sollten nach Bedarf nach `/dist/fonts` kopiert werden. Diese Schriften werden vorher im Umfang reduziert (subsetting), aber das könnte auch Teil des Prozesses sein (was Abhängikeiten außerhalb des node space mit sich bringt).
+Die .woff2 Dateien in `/assets/fonts` sollten nach Bedarf nach `/dist/fonts` kopiert werden. Diese Schriften werden vorher im Umfang reduziert (subsetting), aber das könnte auch Teil des Prozesses sein (was Abhängigkeiten außerhalb des node space mit sich bringt).
 
 ### Favicons
 
@@ -62,9 +62,9 @@ Natürlich möchte ich die Automatisierung nicht nach jedem Datei-Speichern manu
 
 ## Von gulp zu reinem node
 
-Das gulp Setup hatte 29 Abhängigkeiten, während das neue nur eine weniger hat, aber wir lassen die gulp Wrapper um die meisten von ihnen hinter uns. Betrachtet man jedoch die Anzahl der Abhängigkeiten (`npm ls --depth=1 | wc -l`), so sank die Anzahl von 280 auf 247. Die Abhängigkeiten auf der zweiten Ebene fielen von 781 auf 606. Auch die Anzahl der Verwerfungswarnungen während des `npm install` ging deutlich zurück.
+Das gulp Setup hatte 29 Abhängigkeiten, während das neue nur eine weniger hat, aber wir lassen die gulp Wrapper um die meisten von ihnen hinter uns. Betrachtet man jedoch die Anzahl der Abhängigkeiten (`npm ls --depth=1 | wc -l`), so sank die Anzahl von 280 auf 247. Die Abhängigkeiten auf der zweiten Ebene fielen von 781 auf 606. Auch die Anzahl der Deprication Warnings während des `npm install` ging deutlich zurück.
 
-Da ich kein erfahrener JengaScript- oder Node-Profi bin, musste ich mich ziemlich oft mit JS-Promises herumschlagen, aber schließlich klappte alles. Im Vergleich zum gulp Setup gibt es jetzt den Ordner `.tasks` im Node-Setup. Darin befinden sich eine Reihe von .mjs-Dateien, eine Konfiguration für BrowserSync und ein Shell-Skript zum Erstellen von Favions (es gibt kein npm-Paket, das alle Möglichkeiten von Image Magick richtig ausnutzen kann).
+Da ich kein erfahrener JengaScript- oder Node-Profi bin, musste ich mich ziemlich oft mit JS-Promises herumschlagen, aber schließlich klappte alles. Im Vergleich zum gulp Setup gibt es jetzt den Ordner `.tasks` im Node-Setup. Darin befinden sich eine Reihe von .mjs-Dateien, eine Konfiguration für BrowserSync und ein Shell-Skript zum Erstellen von Favicons (es gibt kein npm-Packet, das alle Möglichkeiten von Image Magick richtig ausnutzen kann).
 
 Im Abschnitt `scripts` der `package.json` werden diese verwendet.
 
