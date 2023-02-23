@@ -76,11 +76,17 @@
     },
     "browserslist": [
         "defaults",
-        "not ie 11",
-        "not ie_mob 11",
-        "not baidu >= 7.12",
-        "not and_qq >= 1.2",
-        "not op_mini all"
+        "> 1% in alt-EU",
+        "last 2 versions",
+        "Firefox ESR",
+        "not dead",
+        "not baidu > 0",
+        "not kaios > 0",
+        "not ucandroid > 0",
+        "not qqandroid > 0",
+        "not op_mini all",
+        "not operamini > 0",
+        "not operamobile > 0"
     ],
     "scripts": {
         "js": "node .tasks/javascript-dev.mjs",
